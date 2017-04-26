@@ -67,7 +67,13 @@ export function initialize(settings = {}) {
     console.log('settings.currentLocation =', settings.currentLocation);
 
     return dispatch(verifyAuth(settings.currentLocation))
+      .then(res => {
+        console.log('res =', res);
+        return res;
+      })
       .then(({ user }) => {
+        console.log('user =', user);
+
         dispatch(authenticateComplete(user));
 
         return Promise.resolve();
