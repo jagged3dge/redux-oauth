@@ -46,4 +46,3 @@ function getPopupDimensions(provider) {
 }
 
 export default (provider, url, name) => window.open(url, name, `${settings},${getPopupDimensions(provider)}`);
-
