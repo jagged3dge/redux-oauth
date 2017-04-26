@@ -30,10 +30,14 @@ export default function (currentLocation) {
     const url = `${backend.tokenValidationPath}?unbatch=true`;
 
     dispatch(authenticateStart());
+    console.log('validation url =', url);
+    console.log('dispatch =', dispatch);
 
     return dispatch(fetch(url))
       .then(resp => resp.json())
       .then(json => {
+        console.log('validation response =', json);
+
         if (json.success) {
           return Promise.resolve({ user: json.data });
         }
