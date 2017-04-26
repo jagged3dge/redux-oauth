@@ -20,6 +20,9 @@ export default function (currentLocation) {
       headers = parseHeaders(authRedirectHeaders, tokenFormat);
     }
 
+    console.log('headers =', headers);
+    console.log('keys(headers).length =', keys(headers).length);
+
     if (keys(headers).length === 0) {
       return Promise.reject({ reason: 'No creds' });
     }
