@@ -32,6 +32,7 @@ export default function (currentLocation) {
     dispatch(authenticateStart());
     console.log('validation url =', url);
     console.log('dispatch =', dispatch);
+    console.log('fetch(url) =', fetch(url));
 
     return dispatch(fetch(url))
       .then(resp => resp.json())
