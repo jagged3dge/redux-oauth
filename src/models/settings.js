@@ -29,7 +29,9 @@ function cookieOptions(state) {
   return {
     key:    state.auth.getIn(['config', 'cookieOptions', 'key']),
     expire: state.auth.getIn(['config', 'cookieOptions', 'expire']),
-    path:   state.auth.getIn(['config', 'cookieOptions', 'path'])
+    path:   state.auth.getIn(['config', 'cookieOptions', 'path']),
+    secure: state.auth.getIn(['config', 'cookieOptions', 'secure']),
+    sameSite: state.auth.getIn(['config', 'cookieOptions', 'sameSite'])
   };
 }
 
