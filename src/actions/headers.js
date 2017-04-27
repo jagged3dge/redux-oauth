@@ -9,7 +9,9 @@ export function updateHeaders(headers = {}) {
 
     Cookies.set(cookieOptions.key, JSON.stringify(headers), {
       expires: cookieOptions.expire,
-      path: cookieOptions.path
+      path: cookieOptions.path,
+      secure: cookieOptions.secure,
+      sameSite: cookieOptions.sameSite
     });
 
     return dispatch({ type: UPDATE_HEADERS, headers });
