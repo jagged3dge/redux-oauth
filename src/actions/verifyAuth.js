@@ -20,9 +20,6 @@ export default function (currentLocation) {
       headers = parseHeaders(authRedirectHeaders, tokenFormat);
     }
 
-    console.log('headers =', headers);
-    console.log('keys(headers).length =', keys(headers).length);
-
     if (keys(headers).length === 0) {
       return Promise.reject({ reason: 'No creds' });
     }
@@ -30,9 +27,6 @@ export default function (currentLocation) {
     const url = `${backend.tokenValidationPath}?unbatch=true`;
 
     dispatch(authenticateStart());
-    console.log('validation url =', url);
-    console.log('dispatch =', dispatch);
-    console.log('fetch(url) =', fetch(url));
 
     return dispatch(fetch(url))
       .then(resp => resp.json())

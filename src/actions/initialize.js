@@ -43,19 +43,12 @@ export function initialize(settings = {}) {
 
     const mergedSettings = mergeSettings(settings);
 
-    console.log('mergedSettings =', mergedSettings);
-
     dispatch(initSettings(mergedSettings));
-
-    console.log('mergedSettings.cookies =', mergedSettings.cookies);
 
     if (mergedSettings.cookies && mergedSettings.cookies[mergedSettings.cookieOptions.key]) {
       try {
-        console.log('mergedSettings.cookies[mergedSettings.cookieOptions.key] =',
-                    mergedSettings.cookies[mergedSettings.cookieOptions.key]);
         dispatch(updateHeaders(JSON.parse(mergedSettings.cookies[mergedSettings.cookieOptions.key])));
       } catch (ex) {
-        console.log('updateHeaders with new cookies failed. ex =', ex);
         dispatch(updateHeaders());
       }
     }
@@ -64,16 +57,8 @@ export function initialize(settings = {}) {
       return Promise.resolve({ blank: true });
     }
 
-    console.log('settings.currentLocation =', settings.currentLocation);
-
     return dispatch(verifyAuth(settings.currentLocation))
-      .then(res => {
-        console.log('res =', res);
-        return res;
-      })
       .then(({ user }) => {
-        console.log('user =', user);
-
         dispatch(authenticateComplete(user));
 
         return Promise.resolve();
