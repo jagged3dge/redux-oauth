@@ -31,8 +31,6 @@ export default function (currentLocation) {
     return dispatch(fetch(url))
       .then(resp => resp.json())
       .then(json => {
-        console.log('validation response =', json);
-
         if (json.success) {
           return Promise.resolve({ user: json.data });
         }
